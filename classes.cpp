@@ -69,16 +69,62 @@ class YAClass
         //a copy constructor
         //copy constructors are important because
         //pointers won't copy
+        //
+        //When tested with and without this copy constructor
+        //I saw no difference on output
         YAClass(const YAClass& rhs)
+        : x{ rhs.x }, y{ rhs.y }, p{ new int { *rhs.p } }
         {
-            x = rhs.x;
-            y = rhs.y;
-            //no dereference needed,
-            //yes, a new int has a constructor
-            p = new int{*rhs.p};
             std::cout << "Copy made and set." << std::endl;
         }
 
+        //There is a move constructor, but I see little need
+
+        //operator overload constructor
+        //classes can be operated upon, such as YAClass++ or YAClass--
+        //but a constructor is needed to define what to do in the case
+        //an overloaded constructor is needed for each type of operator
+        //if you don't provide an operator overload constructor, things may not work
+        YAClass& operator++()
+        {
+            //If we type ++object the following 
+            //will be incremented
+            ++x;
+            std::cout << "Operator overload activated" << std::endl;
+            return *this;       //absolutely required
+        }
+
+        //Postfix operator overload is different
+        //This does NOT use a referenced YAClass
+        YAClass operator++(int)
+        {
+            //If we type object-- the following 
+            //will be decremented
+            YAClass tmp(*this);     //create temp copy
+            operator++();           //invoke the prefix operator overload
+            
+            std::cout << "Postfix overload activated" << std::endl;
+            return tmp;       //absolutely required
+        }
+
+        //A += or -= type of operator overload requires a parameter
+        YAClass& operator+=(const YAClass rhs)
+        {
+            this->y += rhs.y;
+            return *this;
+        }
+        
+        //and addition, *, / type of operator requires two parameters
+        //and friend prefix
+        //notice copy in first param position isn't referenced,
+        //this is friend, I think
+        friend YAClass operator+(YAClass lhs, const YAClass& rhs)
+        {
+            lhs += rhs;
+            return lhs;
+        }
+
+        //methods
         void printxy();
 
 };
@@ -103,6 +149,7 @@ int main(void)
     Another_Class x;
     YAClass mine{123, 456, num};
     YAClass yours = mine;   //example of what happens without copy constructor
+    YAClass ours{0, 0, num};
     
 
     //call the do_something method of aclass
@@ -114,6 +161,21 @@ int main(void)
 
     mine.printxy();
     yours.printxy();
+
+    //increment x in mine?
+    std::cout << "Increment X in mine before" << std::endl;
+    ++mine;
+    mine.printxy();
+
+    std::cout << "Increment X in mine after" << std::endl;
+    mine++;
+    mine.printxy();
+    std::cout << "binary addition '+=' of mine and yours" << std::endl;
+    mine += yours;
+    mine.printxy();
+    std::cout << "regular addition of mine and yours" << std::endl;
+    ours = mine + yours;
+    ours.printxy();
 
     return 0;
 
