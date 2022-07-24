@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    //The book shows top versions (p, a),
+    //The book shows two versions (p, a),
     //But bottom versions work fine.
     int* p;
     int *q;
