@@ -1,36 +1,34 @@
 #include <iostream>
+#include <string>
 
-double division(int a, int b) {
-   if( b == 0 ) {
 
-      //try/catch needs a throw to work
-      //this is a custom throw where
-      //you follow throw with a message.
-      //
-      //the message is sent to try/catch
-      throw "Division by zero condition!";
-   }
-   return (a/b);
-}
+int main(void)
+{
+    try
+    {
+        throw 123;
+        //the following won't run because of error above
+        std::cout << "Assume an error occurs here." << std::endl;
+        std::cout << "(inside try)" << std::endl;
 
-int main () {
-   int x = 50;
-   int y = 0;     //generates error in division
-   double z = 0;
- 
-   try {
-      z = division(x, y);
-      std::cout << z << std::endl;
-   } catch (const char* msg) {
+        //IF YOU NEED TO CHECK MORE THAN ONE ERROR
+        //use an if/then to separate checks and 
+        //multiple catch clauses to handle them
+        //see note below
+    }
+    catch(const std::exception& e)
+    {
+        //This is boiler plate provided by
+        //extension.  You can use anything you wish
+        //
+        std::cerr << e.what() << '\n';
 
-     //when the error is thrown,
-     //catch receives the message we sent.
-     //the const char* msg above is a place 
-     //for the message to go.
-     //
-     //std::cerr is same as std::cout most times.
-     std::cerr << msg << std::endl;
-   }
+        //My error routine
+        //e is an object with one method
+        std::cout << "Error message: " << e.what() << std::endl;
+    }
+    //THERE CAN BE MORE THAN ONE CATCH CLAUSE
 
-   return 0;
+    return 0;
+    
 }
