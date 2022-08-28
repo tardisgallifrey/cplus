@@ -51,7 +51,7 @@ int main(void)
     //where the substring starts
     std::string::size_type found = s.find("Hello");
 
-    //npos is a buil-in constant meaning
+    //npos is a built-in constant meaning
     //"NOT FOUND"
     if(found != std::string::npos){
         std::cout << "Substring found at position: " << found << std::endl;
