@@ -59,6 +59,7 @@ int main(void)
     std::cout << "Pointers point to: " << *x << " " << *y << std::endl;
     std::cout << "Char ptrs point to: " << *v << " " << *t << std::endl;
     
+    //always free malloc
     free(x);
     free(y);
     free(v);

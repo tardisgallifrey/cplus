@@ -14,7 +14,7 @@ class MyBaseClass
 
     public:
 
-        //These methods cannot be overwritten by child classes
+        //These methods cannot be overridden by child classes
         void setC(char b)
         {
             c = b;

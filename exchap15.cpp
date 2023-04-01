@@ -29,4 +29,25 @@ int main(){
     std::getline(std::cin, fullname);
     std::cout << "Your name is: " << fullname << std::endl;
 
+    //substrings
+    fullname = "John Doe";
+    //substring, start at pos 0, give me four chars
+    std::string firstname = fullname.substr(0, 4);
+    //substring, start at pos 5, give me three chars
+    std::string lastname = fullname.substr(5, 3);
+    std::cout << "Fullname: " << fullname << std::endl;
+    std::cout << "First Name: " << firstname << std::endl;
+    std::cout << "Last Name: " << lastname << std::endl;
+
+    //find a char
+    auto characterfound = fullname.find('n');
+    if( characterfound != std::string::npos ){
+        std::cout << "Character n found at pos: " << characterfound << std::endl;
+        std::cout << " in string: " << fullname << std::endl;
+
+    }else{
+        std::cout << "Character not found." << std::endl;
+    }
+
+
 }

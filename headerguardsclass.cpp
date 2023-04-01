@@ -2,7 +2,7 @@
 //but it also needs to include the header file
 #ifndef HEADER_GUARD_H
 #define HEADER_GUARD_H
-    #include "headerguards.h"   //quotations meands search this folder only
+    #include "headerguards.h"   //quotations means search this folder only
 #endif
 
 //Did I include these already, or not?
