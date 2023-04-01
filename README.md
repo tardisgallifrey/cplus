@@ -2,8 +2,8 @@
 ### by Slobodan Dmitrovic
 
 ### file defs
-**hello.cpp -- Typical stuff**
-**input.cpp -- How to Input**
+**hello.cpp -- Typical stuff**<br/>
+**input.cpp -- How to Input**<br/>
 **string.cpp -- Stuff to do with strings, including string input**
 **stringptr.cpp -- the c_str() method to create a pointer**
 **strings.cpp -- find(), substr(), getline(), at()**
