@@ -11,3 +11,6 @@
 **auto.cpp -- auto variable type**
 **functions.cpp -- function declaration, definition, overloads**
 **storage.cpp -- new and delete, which is like using malloc**
+**cmakeprojects/boostex1 -- A Cmake build project using Boost library**
+**cmakeprojects/boostex2  -- second attempt**
+**cmakeprojects/input -- A Cmake project going through W3Schools C++ lessons**

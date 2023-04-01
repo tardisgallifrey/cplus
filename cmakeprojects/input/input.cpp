@@ -1,6 +1,12 @@
-#include <iostream>
-#include <string>   //needed for string object
-#include <cmath>    //needed for math functions
+#ifndef STD_INCLUDES
+#define STD_INCLUDES
+    #include <iostream>
+    #include <string>           //needed for strings
+    #include <cmath>            //needed for math functions
+    #include "boolexample.cpp"  //klugey, but I'll do it
+    #include "switch.cpp"       //switch/case
+    #include "loops.cpp"        //loops
+#endif
 
 //all main functions return int
 //void is for not using command line args
@@ -55,10 +61,37 @@ int main(void)
     std::cout << "Rounding 2.6: " << std::round(2.6) << std::endl;
     std::cout << "Log of 2: " << std::log(2) << std::endl;
     
+    //Booleans
+    bool isCodingFun = true;
+    bool isFishTasty = false;
+    std::cout << isCodingFun << std::endl;  // Outputs 1 (true)
+    std::cout << isFishTasty << std::endl;  // Outputs 0 (false)
     
+    //Better use of bools is in boolean statements
+    int x = 10;
+    int y = 9;
+    std::cout << (x > y) << std::endl; // returns 1 (true), because 10 is higher than 9
     
-    
-    
+    BoolExample example = BoolExample();
+
+    example.OldEnough();
+
+    Switch days = Switch();
+
+    days.Days();
+
+    Loops example2 = Loops();
+
+    example2.loopWhile();
+
+    example2.doWhileLoop();
+
+    example2.forLoop();
+
+    example2.useBreak();
+
+    example2.useContinue();
+
     //always return a value, preferably zero
     return 0;
 }
